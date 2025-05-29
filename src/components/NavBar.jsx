@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import logo from "/images/logo.png";
-import { MenuIcon, X } from "lucide-react";
+import { Menu, MenuIcon, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -24,29 +24,17 @@ const navItems = [
 
 const NavBar = () => {
   const [isNavShowing, setIsNavShowing] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "pt-2 bg-background/80 backdrop-blur-md shadow-xs" : "py-2"
+        "fixed top-0 left-0 w-full z-60 transition-all duration-300"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between md:bg-background/80 md:backdrop-blur-md">
         <a href="#home">
           <img src={logo} alt="logo" className="h-22 w-22 object-cover py-2" />
         </a>
-
         {/* Desktop */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
@@ -59,21 +47,24 @@ const NavBar = () => {
             </a>
           ))}
         </div>
-
         {/* mobile */}
         <button
-          className="md:hidden z-50 p-2 text-button/30"
+          className="md:hidden z-80 p-2 text-button/30"
           onClick={() => setIsNavShowing((prev) => !prev)}
+          aria-label={isNavShowing ? "Close Menu" : "Open Menu"}
         >
           {isNavShowing ? <X size={24} /> : <MenuIcon size={24} />}
         </button>
         <div
           className={cn(
-            "fixed inset-0 flex flex-col items-center justify-center md:hidden bg-card/20 backdrop-blur-md z-40 transition-all durration-300",
-            isNavShowing ? "opacity-100" : "opacity-0"
+            " fixed top-0 left-0 w-full h-full inset-0 bg-background/95 backdrop-blur-md z-70 flex flex-col items-center justify-center",
+            "transition-all duration-300 md:hidden",
+            isNavShowing
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col space-y-8 text-3xl capitalize ">
+          <div className="flex flex-col space-y-8 text-xl capitalize ">
             {navItems.map((item, key) => (
               <a
                 key={key}

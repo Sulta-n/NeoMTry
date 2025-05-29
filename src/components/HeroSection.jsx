@@ -8,7 +8,7 @@ const HeroSection = () => {
       className="relative px-4 min-h-screen flex flex-col items-center justify-center "
     >
       <div className="container  max-w-4xl mx-auto text-center z-10">
-        <div className="space-y-4 md:mt-22">
+        <div className="space-y-3.5 md:space-y-4 md:mt-22">
           <h1 className="text-2xl md:text-6xl text-secondary tracking-tight font-bold">
             Neo{" "}
             <span className="text-primary opacity-0 animate-fade-in-delay-1">
@@ -21,7 +21,7 @@ const HeroSection = () => {
           <div className="flex items-center justify-center opacity-0 animate-fade-in-delay-3">
             <img src={Hero} className="opacity-90 object-cover" />
           </div>
-          <p className="text-primary/70 italic">
+          <p className="text-primary/70 italic text-sm">
             Moments fade, but emotions last forever. With Neo Memories, rekindle
             the essence of your most cherished memories capturing, preserving,
             and reliving the feelings that define you.
