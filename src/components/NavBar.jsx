@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import logo from "/images/logo.png";
 import { MenuIcon, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   {
@@ -24,11 +24,26 @@ const navItems = [
 
 const NavBar = () => {
   const [isNavShowing, setIsNavShowing] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className={cn("fixed w-full z-40 transition-all duration-300")}>
+    <nav
+      className={cn(
+        "fixed w-full z-40 transition-all duration-300",
+        isScrolled ? "pt-2 bg-background/80 backdrop-blur-md shadow-xs" : "py-2"
+      )}
+    >
       <div className="container flex items-center justify-between">
-        <a href="#">
+        <a href="#home">
           <img src={logo} alt="logo" className="h-22 w-22 object-cover py-2" />
         </a>
 
@@ -64,6 +79,7 @@ const NavBar = () => {
                 key={key}
                 href={item.href}
                 className="text-secondary  hover:text-primary transition-colors duration-400"
+                onClick={() => setIsNavShowing(false)}
               >
                 {item.name}
               </a>

@@ -30,7 +30,7 @@ const Offers = () => {
 
               <div className="flex items-center justify-between bg-secondary py-2 px-1 rounded-sm mt-1">
                 <p>{card.name}</p>
-                <span>{card.price}</span>
+                <span className="text-amber-50">{card.price}</span>
               </div>
             </div>
           ))}

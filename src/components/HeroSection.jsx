@@ -28,6 +28,7 @@ const HeroSection = () => {
           </p>
           <button className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce md:hidden">
             <span className="text-sm text-primary">Scroll</span>
+
             <ArrowDown className="text-secondary h-5 w-5" />
           </button>
         </div>
