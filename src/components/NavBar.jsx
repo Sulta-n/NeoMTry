@@ -49,7 +49,7 @@ const NavBar = () => {
         </div>
         {/* mobile */}
         <button
-          className="md:hidden z-80 p-2 text-button/30"
+          className="md:hidden z-80 p-2 text-button/30  backdrop-blur-md rounded-b-lg"
           onClick={() => setIsNavShowing((prev) => !prev)}
           aria-label={isNavShowing ? "Close Menu" : "Open Menu"}
         >

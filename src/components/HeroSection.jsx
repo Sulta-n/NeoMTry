@@ -21,7 +21,7 @@ const HeroSection = () => {
           <div className="flex items-center justify-center opacity-0 animate-fade-in-delay-3">
             <img src={Hero} className="opacity-90 object-cover" />
           </div>
-          <p className="text-primary/70 italic text-sm">
+          <p className="text-primary/70 italic text-sm opacity-0 animate-fade-in-delay-4">
             Moments fade, but emotions last forever. With Neo Memories, rekindle
             the essence of your most cherished memories capturing, preserving,
             and reliving the feelings that define you.
